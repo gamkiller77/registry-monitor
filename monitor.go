@@ -24,9 +24,9 @@ var listen = flag.String("listen", ":8000", "")
 var level = flag.String("loglevel", "info", "default log level: debug, info, warn, error, fatal, panic")
 var dockerUsername = flag.String("username", "", "Registry username for pulling and pushing")
 var dockerPassword = flag.String("password", "", "Registry password for pulling and pushing")
-var registryHost = flag.String("registry-host", "", "Hostname of the registry being monitored")
+var registryHost = flag.String("registryHost", "", "Hostname of the registry being monitored")
 var repository = flag.String("repository", "", "Repository on the registry to pull and push")
-var baseLayer = flag.String("base-layer-id", "", "Docker V1 ID of the base layer in the repository")
+var baseLayer = flag.String("baseLayerId", "", "Docker V1 ID of the base layer in the repository")
 
 var (
 	healthy bool
@@ -398,7 +398,7 @@ func main() {
 	}
 
 	if *registryHost == "" {
-		log.Fatalln("Missing registry-host flag")
+		log.Fatalln("Missing registryHost flag")
 	}
 
 	if *repository == "" {
@@ -406,7 +406,7 @@ func main() {
 	}
 
 	if *baseLayer == "" {
-		log.Fatalln("Missing base-layer-id flag")
+		log.Fatalln("Missing baseLayerId flag")
 	}
 
 	// Register the metrics.
